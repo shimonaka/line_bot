@@ -2,7 +2,7 @@
 
 const express = require('express');
 const line = require('@line/bot-sdk');
-const PORT = process.env.PORT || 5000;
+const PORT = process.env.PORT || 3000;
 
 const config = {
 	channelSecret: '5580559e17b9b841ba5b0ab596b58188',
