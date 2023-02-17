@@ -104,7 +104,6 @@ async function handleEvent(event) {
 		});
 	}
 
-
 	if (event.message.text === 'アシスタント' || event.message.text === 'スタイリスト' || event.message.text === '学生' || event.message.text === 'それ以外') {
 		return client.replyMessage(event.replyToken, {
 			"type": "template",
@@ -143,6 +142,7 @@ async function handleEvent(event) {
 			}
 		});
 	}
+
 
 
 	if (event.message.text === '給料' || event.message.text === '安定性' || event.message.text === '成長スピード' || event.message.text === 'オシャレさ' || event.message.text === 'ママへの待遇') {
