@@ -37,7 +37,7 @@ async function handleEvent(event) {
 
 	let replyText = '';
 	if (event.message.text === '回答を始める') {
-		client.replyMessage(event.replyToken, {
+		return client.replyMessage(event.replyToken, {
 			"type": "template",
 			"altText": "this is a buttons template",
 			"template": {
@@ -71,7 +71,7 @@ async function handleEvent(event) {
 	}
 
 	if (event.message.text === 'すぐにでも' || event.message.text === '3ヵ月以内' || event.message.text === '半年以内' || event.message.text === '未定') {
-		client.replyMessage(event.replyToken, {
+		return client.replyMessage(event.replyToken, {
 			"type": "template",
 			"altText": "this is a buttons template",
 			"template": {
@@ -105,7 +105,7 @@ async function handleEvent(event) {
 	}
 
 	if (event.message.text === 'アシスタント' || event.message.text === 'スタイリスト' || event.message.text === '学生' || event.message.text === 'それ以外') {
-		client.replyMessage(event.replyToken, {
+		return client.replyMessage(event.replyToken, {
 			"type": "template",
 			"altText": "this is a buttons template",
 			"template": {
@@ -146,7 +146,7 @@ async function handleEvent(event) {
 
 
 	if (event.message.text === '給料' || event.message.text === '安定性' || event.message.text === '成長スピード' || event.message.text === 'オシャレさ' || event.message.text === 'ママへの待遇') {
-		client.replyMessage(event.replyToken, {
+		return client.replyMessage(event.replyToken, {
 			"type": "template",
 			"altText": "this is a buttons template",
 			"template": {
@@ -185,7 +185,7 @@ async function handleEvent(event) {
 	}
 
 	if (event.message.text === '10代' || event.message.text === '20代' || event.message.text === '30代' || event.message.text === '40代' || event.message.text === '50代以上') {
-		client.replyMessage(event.replyToken, {
+		return client.replyMessage(event.replyToken, {
 			"type": "text",
 			"text": "ご回答ありがとうございます！\n担当者へお繋ぎしますので、しばらくお待ちください。"
 			});
