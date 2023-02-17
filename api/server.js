@@ -96,6 +96,11 @@ async function handleEvent(event) {
 						"type": "message",
 						"label": "それ以外",
 						"text": "それ以外"
+					},
+					{
+						"type": "message",
+						"label": "給料",
+						"text": "給料"
 					}
 				],
 				"title": "現在の技術ランクを教えてください",
@@ -104,48 +109,48 @@ async function handleEvent(event) {
 		});
 	}
 
-	if (event.message.text == 'アシスタント' || event.message.text == 'スタイリスト' || event.message.text == '学生' || event.message.text == 'それ以外') {
-		return client.replyMessage(event.replyToken, {
-			"type": "template",
-			"altText": "this is a buttons template",
-			"template": {
-				"type": "buttons",
-				"actions": [
-					{
-						"type": "message",
-						"label": "給料",
-						"text": "給料"
-					},
-					{
-						"type": "message",
-						"label": "安定性",
-						"text": "安定性"
-					},
-					{
-						"type": "message",
-						"label": "成長スピード",
-						"text": "成長スピード"
-					},
-					{
-						"type": "message",
-						"label": "オシャレさ",
-						"text": "オシャレさ"
-					},
-					{
-						"type": "message",
-						"label": "ママへの待遇",
-						"text": "ママへの待遇"
-					}
-				],
-				"title": "働くお店に求めることは何ですか？",
-				"text": "以下から最も近いものをお選びください"
-			}
-		});
-	}
+	// if (event.message.text === 'アシスタント' || event.message.text === 'スタイリスト' || event.message.text === '学生' || event.message.text === 'それ以外') {
+	// 	return client.replyMessage(event.replyToken, {
+	// 		"type": "template",
+	// 		"altText": "this is a buttons template",
+	// 		"template": {
+	// 			"type": "buttons",
+	// 			"actions": [
+	// 				{
+	// 					"type": "message",
+	// 					"label": "給料",
+	// 					"text": "給料"
+	// 				},
+	// 				{
+	// 					"type": "message",
+	// 					"label": "安定性",
+	// 					"text": "安定性"
+	// 				},
+	// 				{
+	// 					"type": "message",
+	// 					"label": "成長スピード",
+	// 					"text": "成長スピード"
+	// 				},
+	// 				{
+	// 					"type": "message",
+	// 					"label": "オシャレさ",
+	// 					"text": "オシャレさ"
+	// 				},
+	// 				{
+	// 					"type": "message",
+	// 					"label": "ママへの待遇",
+	// 					"text": "ママへの待遇"
+	// 				}
+	// 			],
+	// 			"title": "働くお店に求めることは何ですか？",
+	// 			"text": "以下から最も近いものをお選びください"
+	// 		}
+	// 	});
+	// }
 
 
 
-	if (event.message.text == '給料' || event.message.text == '安定性' || event.message.text == '成長スピード' || event.message.text == 'オシャレさ' || event.message.text == 'ママへの待遇') {
+	if (event.message.text === '給料' || event.message.text === '安定性' || event.message.text === '成長スピード' || event.message.text === 'オシャレさ' || event.message.text === 'ママへの待遇') {
 		return client.replyMessage(event.replyToken, {
 			"type": "template",
 			"altText": "this is a buttons template",
