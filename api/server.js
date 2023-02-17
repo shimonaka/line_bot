@@ -96,11 +96,6 @@ async function handleEvent(event) {
 						"type": "message",
 						"label": "それ以外",
 						"text": "それ以外"
-					},
-					{
-						"type": "message",
-						"label": "給料",
-						"text": "給料"
 					}
 				],
 				"title": "現在の技術ランクを教えてください",
