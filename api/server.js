@@ -70,41 +70,41 @@ async function handleEvent(event) {
 		});
 	}
 
-	// if (event.message.text === 'すぐにでも' || event.message.text === '3ヵ月以内' || event.message.text === '半年以内' || event.message.text === '未定') {
-	// 	return client.replyMessage(event.replyToken, {
-	// 		"type": "template",
-	// 		"altText": "this is a buttons template",
-	// 		"template": {
-	// 			"type": "buttons",
-	// 			"actions": [
-	// 				{
-	// 					"type": "message",
-	// 					"label": "アシスタント",
-	// 					"text": "アシスタント"
-	// 				},
-	// 				{
-	// 					"type": "message",
-	// 					"label": "スタイリスト",
-	// 					"text": "スタイリスト"
-	// 				},
-	// 				{
-	// 					"type": "message",
-	// 					"label": "学生",
-	// 					"text": "学生"
-	// 				},
-	// 				{
-	// 					"type": "message",
-	// 					"label": "それ以外",
-	// 					"text": "それ以外"
-	// 				}
-	// 			],
-	// 			"title": "現在の技術ランクを教えてください",
-	// 			"text": "一番あなたに近いものを教えてください"
-	// 		}
-	// 	});
-	// }
+	if (event.message.text === 'すぐにでも' || event.message.text === '3ヵ月以内' || event.message.text === '半年以内' || event.message.text === '未定') {
+		return client.replyMessage(event.replyToken, {
+			"type": "template",
+			"altText": "this is a buttons template",
+			"template": {
+				"type": "buttons",
+				"actions": [
+					{
+						"type": "message",
+						"label": "アシスタント",
+						"text": "アシスタント"
+					},
+					{
+						"type": "message",
+						"label": "スタイリスト",
+						"text": "スタイリスト"
+					},
+					{
+						"type": "message",
+						"label": "学生",
+						"text": "学生"
+					},
+					{
+						"type": "message",
+						"label": "それ以外",
+						"text": "それ以外"
+					}
+				],
+				"title": "現在の技術ランクを教えてください",
+				"text": "一番あなたに近いものを教えてください"
+			}
+		});
+	}
 
-	if (event.message.text === 'アシスタント' || event.message.text === 'スタイリスト' || event.message.text === '学生' || event.message.text === 'それ以外') {
+	if (event.message.text === 'アシスタント') {
 		return client.replyMessage(event.replyToken, {
 			"type": "template",
 			"altText": "this is a buttons template",
