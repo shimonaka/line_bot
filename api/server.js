@@ -37,7 +37,7 @@ async function handleEvent(event) {
 
 	let replyText = '';
 	if (event.message.text === '回答を始める') {
-		return client.replyMessage(event.replyToken, {
+		client.replyMessage(event.replyToken, {
 			"type": "template",
 			"altText": "this is a buttons template",
 			"template": {
