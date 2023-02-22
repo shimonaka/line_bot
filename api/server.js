@@ -177,11 +177,11 @@ async function handleEvent(event) {
 			type: 'text',
 			text: 'ご回答ありがとうございます！\n担当者へお繋ぎしますので、しばらくお待ちください。'
 		};
-		await client.replyMessage(event.replyToken, message);
 		await client.pushMessage(event.source.userId, question1);
 		await client.pushMessage(event.source.userId, question2);
 		await client.pushMessage(event.source.userId, question3);
 		await client.pushMessage(event.source.userId, question4);
+		await client.replyMessage(event.replyToken, message);
 	} else {
 		// save the answers to a database or send them to a webhook
 	}
