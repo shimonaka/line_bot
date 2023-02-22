@@ -36,187 +36,209 @@ async function handleEvent(event) {
 	}
 
 	const userMessage = event.message.text;
+	const userId = event.source.userId;
 
+	// Initialize the conversation object
+	if (!conversations[userId]) {
+		conversations[userId] = {
+			currentQuestionIndex: 0,
+			answers: []
+		};
+	}
 
-	if (userMessage === '回答を始める') {
-		const question1 = {
-			"type": "template",
-			"altText": "this is a buttons template",
-			"template": {
-				"type": "buttons",
-				"actions": [
-					{
-						"type": "message",
-						"label": "すぐにでも",
-						"text": "すぐにでも"
-					},
-					{
-						"type": "message",
-						"label": "3ヵ月以内",
-						"text": "3ヵ月以内"
-					},
-					{
-						"type": "message",
-						"label": "半年以内",
-						"text": "半年以内"
-					},
-					{
-						"type": "message",
-						"label": "時期未定",
-						"text": "時期未定"
-					}
-				],
-				"title": "転職希望時期をお選びください！",
-				"text": "ご希望の転職時期をお選びください"
-			}
-		};
-		const question2 = {
-			"type": "template",
-			"altText": "this is a buttons template",
-			"template": {
-				"type": "buttons",
-				"actions": [
-					{
-						"type": "message",
-						"label": "アシスタント",
-						"text": "アシスタント"
-					},
-					{
-						"type": "message",
-						"label": "スタイリスト",
-						"text": "スタイリスト"
-					},
-					{
-						"type": "message",
-						"label": "学生",
-						"text": "学生"
-					},
-					{
-						"type": "message",
-						"label": "それ以外",
-						"text": "それ以外"
-					}
-				],
-				"title": "現在の技術ランクを教えてください",
-				"text": "一番あなたに近いものを教えてください"
-			}
-		};
-		const question3 = {
-			"type": "template",
-			"altText": "this is a carousel template",
-			"template": {
-				"type": "carousel",
-				"columns": [
-					{
-						"title": "働くお店に求めることは何ですか？",
-						"text": "一番あなたに近いものを教えてください",
-						"actions": [
-							{
-								"type": "message",
-								"label": "給料",
-								"text": "給料"
-							},
-							{
-								"type": "message",
-								"label": "スタイリスト",
-								"text": "スタイリスト"
-							},
-							{
-								"type": "message",
-								"label": "安定",
-								"text": "安定"
-							}
-						]
-					},
-					{
-						"title": "働くお店に求めることは何ですか？",
-						"text": "一番あなたに近いものを教えてください",
-						"actions": [
-							{
-								"type": "message",
-								"label": "成長スピード",
-								"text": "成長スピード"
-							},
-							{
-								"type": "message",
-								"label": "オシャレさ",
-								"text": "オシャレさ"
-							},
-							{
-								"type": "message",
-								"label": "ママへの待遇",
-								"text": "ママへの待遇"
-							}
-						]
-					}
-				]
-			}
-		};
-		const question4 = {
-			"type": "template",
-			"altText": "this is a carousel template",
-			"template": {
-				"type": "carousel",
-				"columns": [
-					{
-						"title": "あなたの年代を教えてください",
-						"text": "一番あなたに近いものを教えてください",
-						"actions": [
-							{
-								"type": "message",
-								"label": "10代",
-								"text": "10代"
-							},
-							{
-								"type": "message",
-								"label": "20代",
-								"text": "20代"
-							},
-							{
-								"type": "message",
-								"label": "30代",
-								"text": "30代"
-							}
-						]
-					},
-					{
-						"title": "あなたの年代を教えてください",
-						"text": "一番あなたに近いものを教えてください",
-						"actions": [
-							{
-								"type": "message",
-								"label": "40代",
-								"text": "40代"
-							},
-							{
-								"type": "message",
-								"label": "50代",
-								"text": "50代"
-							},
-							{
-								"type": "message",
-								"label": "60代以上",
-								"text": "60代以上"
-							}
-						]
-					}
-				]
-			}
-		};
+	// Get the current question and send it to the user
+	const currentQuestionIndex = conversations[userId].currentQuestionIndex;
+	const currentQuestion = questions[currentQuestionIndex];
+	await client.pushMessage(userId, currentQuestion);
+
+	// Save the user's answer and advance to the next question
+	conversations[userId].answers.push(userMessage);
+	conversations[userId].currentQuestionIndex += 1;
+
+	// Check if all questions have been answered
+	if (conversations[userId].currentQuestionIndex === questions.length) {
 		const message = {
 			type: 'text',
 			text: 'ご回答ありがとうございます！\n担当者へお繋ぎしますので、しばらくお待ちください。'
 		};
-		await client.pushMessage(event.source.userId, question1);
-		await client.pushMessage(event.source.userId, question2);
-		await client.pushMessage(event.source.userId, question3);
-		await client.pushMessage(event.source.userId, question4);
 		await client.replyMessage(event.replyToken, message);
-	} else {
-		// save the answers to a database or send them to a webhook
-	}
 
+		// Do something with the answers, e.g. save them to a database or send them to a webhook
+		console.log(conversations[userId].answers);
+
+		// Reset the conversation object
+		delete conversations[userId];
+	}
 }
+
+const questions = [
+	{
+		"type": "template",
+		"altText": "this is a buttons template",
+		"template": {
+			"type": "buttons",
+			"actions": [
+				{
+					"type": "message",
+					"label": "すぐにでも",
+					"text": "すぐにでも"
+				},
+				{
+					"type": "message",
+					"label": "3ヵ月以内",
+					"text": "3ヵ月以内"
+				},
+				{
+					"type": "message",
+					"label": "半年以内",
+					"text": "半年以内"
+				},
+				{
+					"type": "message",
+					"label": "時期未定",
+					"text": "時期未定"
+				}
+			],
+			"title": "転職希望時期をお選びください！",
+			"text": "ご希望の転職時期をお選びください"
+		}
+	},
+	{
+		"type": "template",
+		"altText": "this is a buttons template",
+		"template": {
+			"type": "buttons",
+			"actions": [
+				{
+					"type": "message",
+					"label": "アシスタント",
+					"text": "アシスタント"
+				},
+				{
+					"type": "message",
+					"label": "スタイリスト",
+					"text": "スタイリスト"
+				},
+				{
+					"type": "message",
+					"label": "学生",
+					"text": "学生"
+				},
+				{
+					"type": "message",
+					"label": "それ以外",
+					"text": "それ以外"
+				}
+			],
+			"title": "現在の技術ランクを教えてください",
+			"text": "一番あなたに近いものを教えてください"
+		}
+	},
+	{
+		"type": "template",
+		"altText": "this is a carousel template",
+		"template": {
+			"type": "carousel",
+			"columns": [
+				{
+					"title": "働くお店に求めることは何ですか？",
+					"text": "一番あなたに近いものを教えてください",
+					"actions": [
+						{
+							"type": "message",
+							"label": "給料",
+							"text": "給料"
+						},
+						{
+							"type": "message",
+							"label": "スタイリスト",
+							"text": "スタイリスト"
+						},
+						{
+							"type": "message",
+							"label": "安定",
+							"text": "安定"
+						}
+					]
+				},
+				{
+					"title": "働くお店に求めることは何ですか？",
+					"text": "一番あなたに近いものを教えてください",
+					"actions": [
+						{
+							"type": "message",
+							"label": "成長スピード",
+							"text": "成長スピード"
+						},
+						{
+							"type": "message",
+							"label": "オシャレさ",
+							"text": "オシャレさ"
+						},
+						{
+							"type": "message",
+							"label": "ママへの待遇",
+							"text": "ママへの待遇"
+						}
+					]
+				}
+			]
+		}
+	},
+	{
+		"type": "template",
+		"altText": "this is a carousel template",
+		"template": {
+			"type": "carousel",
+			"columns": [
+				{
+					"title": "あなたの年代を教えてください",
+					"text": "一番あなたに近いものを教えてください",
+					"actions": [
+						{
+							"type": "message",
+							"label": "10代",
+							"text": "10代"
+						},
+						{
+							"type": "message",
+							"label": "20代",
+							"text": "20代"
+						},
+						{
+							"type": "message",
+							"label": "30代",
+							"text": "30代"
+						}
+					]
+				},
+				{
+					"title": "あなたの年代を教えてください",
+					"text": "一番あなたに近いものを教えてください",
+					"actions": [
+						{
+							"type": "message",
+							"label": "40代",
+							"text": "40代"
+						},
+						{
+							"type": "message",
+							"label": "50代",
+							"text": "50代"
+						},
+						{
+							"type": "message",
+							"label": "60代以上",
+							"text": "60代以上"
+						}
+					]
+				}
+			]
+		}
+	}
+];
+
+const conversations = {};
 
 // app.listen(PORT);
 // console.log(`Server running at ${PORT}`);
