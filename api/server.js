@@ -155,8 +155,8 @@ const questions = [
 						},
 						{
 							"type": "message",
-							"label": "スタイリスト",
-							"text": "スタイリスト"
+							"label": "休日",
+							"text": "休日"
 						},
 						{
 							"type": "message",
