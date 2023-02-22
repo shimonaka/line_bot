@@ -38,7 +38,7 @@ async function handleEvent(event) {
 	const userMessage = event.message.text;
 	const userId = event.source.userId;
 
-	if (userMessage === 'start') {
+	if (userMessage === '回答を始める') {
 		// 会話オブジェクトを初期化する
 		if (!conversations[userId]) {
 			conversations[userId] = {
