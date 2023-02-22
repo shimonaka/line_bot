@@ -35,9 +35,11 @@ async function handleEvent(event) {
 		return Promise.resolve(null);
 	}
 
-	let replyText = '';
-	if (event.message.text === '回答を始める') {
-		return client.replyMessage(event.replyToken, {
+	const userMessage = event.message.text;
+
+
+	if (userMessage === '回答を始める') {
+		const question1 = {
 			"type": "template",
 			"altText": "this is a buttons template",
 			"template": {
@@ -67,11 +69,8 @@ async function handleEvent(event) {
 				"title": " 転職希望時期をお選びください！",
 				"text": "ご希望の転職時期をお選びください"
 			}
-		});
-	}
-
-	if (event.message.text === 'すぐにでも' || event.message.text === '3ヵ月以内' || event.message.text === '半年以内' || event.message.text === '未定') {
-		return client.replyMessage(event.replyToken, {
+		};
+		const question2 = {
 			"type": "template",
 			"altText": "this is a buttons template",
 			"template": {
@@ -101,11 +100,8 @@ async function handleEvent(event) {
 				"title": "現在の技術ランクを教えてください",
 				"text": "一番あなたに近いものを教えてください"
 			}
-		});
-	}
-
-	if (event.message.text === 'アシスタント' || event.message.text === 'スタイリスト' || event.message.text === '学生' || event.message.text === 'それ以外') {
-		return client.replyMessage(event.replyToken, {
+		};
+		const question3 = {
 			"type": "template",
 			"altText": "this is a buttons template",
 			"template": {
@@ -140,13 +136,8 @@ async function handleEvent(event) {
 				"title": "働くお店に求めることは何ですか？",
 				"text": "以下から最も近いものをお選びください"
 			}
-		});
-	}
-
-
-
-	if (event.message.text === '給料' || event.message.text === '安定性' || event.message.text === '成長スピード' || event.message.text === 'オシャレさ' || event.message.text === 'ママへの待遇') {
-		return client.replyMessage(event.replyToken, {
+		};
+		const question4 = {
 			"type": "template",
 			"altText": "this is a buttons template",
 			"template": {
@@ -181,14 +172,18 @@ async function handleEvent(event) {
 				"title": "あなたの年代を教えてください",
 				"text": "以下から最も近いものをお選びください"
 			}
-		});
-	}
-
-	if (event.message.text === '10代' || event.message.text === '20代' || event.message.text === '30代' || event.message.text === '40代' || event.message.text === '50代以上') {
-		return client.replyMessage(event.replyToken, {
-			"type": "text",
-			"text": "ご回答ありがとうございます！\n担当者へお繋ぎしますので、しばらくお待ちください。"
-			});
+		};
+		const message = {
+			type: 'text',
+			text: 'ご回答ありがとうございます！\n担当者へお繋ぎしますので、しばらくお待ちください。'
+		};
+		await client.replyMessage(event.replyToken, message);
+		await client.pushMessage(event.source.userId, question1);
+		await client.pushMessage(event.source.userId, question2);
+		await client.pushMessage(event.source.userId, question3);
+		await client.pushMessage(event.source.userId, question4);
+	} else {
+		// save the answers to a database or send them to a webhook
 	}
 
 }
