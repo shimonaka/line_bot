@@ -62,18 +62,8 @@ async function handleEvent(event) {
 					},
 					{
 						"type": "message",
-						"label": "1年以内",
-						"text": "1年以内"
-					},
-					{
-						"type": "message",
 						"label": "時期未定",
 						"text": "時期未定"
-					},
-					{
-						"type": "message",
-						"label": "良いサロンが見つかれば",
-						"text": "良いサロンが見つかれば"
 					}
 				],
 				"title": "転職希望時期をお選びください！",
@@ -98,18 +88,8 @@ async function handleEvent(event) {
 					},
 					{
 						"type": "message",
-						"label": "アイリスト",
-						"text": "アイリスト"
-					},
-					{
-						"type": "message",
 						"label": "学生",
 						"text": "学生"
-					},
-					{
-						"type": "message",
-						"label": "ブランク有り",
-						"text": "ブランク有り"
 					},
 					{
 						"type": "message",
@@ -123,84 +103,104 @@ async function handleEvent(event) {
 		};
 		const question3 = {
 			"type": "template",
-			"altText": "this is a buttons template",
+			"altText": "this is a carousel template",
 			"template": {
-				"type": "buttons",
-				"actions": [
+				"type": "carousel",
+				"columns": [
 					{
-						"type": "message",
-						"label": "給料",
-						"text": "給料"
+						"title": "働くお店に求めることは何ですか？",
+						"text": "一番あなたに近いものを教えてください",
+						"actions": [
+							{
+								"type": "message",
+								"label": "給料",
+								"text": "給料"
+							},
+							{
+								"type": "message",
+								"label": "スタイリスト",
+								"text": "スタイリスト"
+							},
+							{
+								"type": "message",
+								"label": "安定",
+								"text": "安定"
+							}
+						]
 					},
 					{
-						"type": "message",
-						"label": "スタイリスト",
-						"text": "スタイリスト"
-					},
-					{
-						"type": "message",
-						"label": "安定",
-						"text": "安定"
-					},
-					{
-						"type": "message",
-						"label": "成長スピード",
-						"text": "成長スピード"
-					},
-					{
-						"type": "message",
-						"label": "オシャレさ",
-						"text": "オシャレさ"
-					},
-					{
-						"type": "message",
-						"label": "ママへの待遇",
-						"text": "ママへの待遇"
+						"title": "働くお店に求めることは何ですか？",
+						"text": "一番あなたに近いものを教えてください",
+						"actions": [
+							{
+								"type": "message",
+								"label": "成長スピード",
+								"text": "成長スピード"
+							},
+							{
+								"type": "message",
+								"label": "オシャレさ",
+								"text": "オシャレさ"
+							},
+							{
+								"type": "message",
+								"label": "ママへの待遇",
+								"text": "ママへの待遇"
+							}
+						]
 					}
-				],
-				"title": "働くお店に求めることは何ですか？",
-				"text": "一番あなたに近いものを教えてください"
+				]
 			}
 		};
 		const question4 = {
 			"type": "template",
-			"altText": "this is a buttons template",
+			"altText": "this is a carousel template",
 			"template": {
-				"type": "buttons",
-				"actions": [
+				"type": "carousel",
+				"columns": [
 					{
-						"type": "message",
-						"label": "10代",
-						"text": "10代"
+						"title": "あなたの年代を教えてください",
+						"text": "一番あなたに近いものを教えてください",
+						"actions": [
+							{
+								"type": "message",
+								"label": "10代",
+								"text": "10代"
+							},
+							{
+								"type": "message",
+								"label": "20代",
+								"text": "20代"
+							},
+							{
+								"type": "message",
+								"label": "30代",
+								"text": "30代"
+							}
+						]
 					},
 					{
-						"type": "message",
-						"label": "20代",
-						"text": "20代"
-					},
-					{
-						"type": "message",
-						"label": "30代",
-						"text": "30代"
-					},
-					{
-						"type": "message",
-						"label": "40代",
-						"text": "40代"
-					},
-					{
-						"type": "message",
-						"label": "50代",
-						"text": "50代"
-					},
-					{
-						"type": "message",
-						"label": "60代以上",
-						"text": "60代以上"
+						"title": "あなたの年代を教えてください",
+						"text": "一番あなたに近いものを教えてください",
+						"actions": [
+							{
+								"type": "message",
+								"label": "40代",
+								"text": "40代"
+							},
+							{
+								"type": "message",
+								"label": "50代",
+								"text": "50代"
+							},
+							{
+								"type": "message",
+								"label": "60代以上",
+								"text": "60代以上"
+							}
+						]
 					}
-				],
-				"title": "あなたの年代を教えてください",
-				"text": "以下から最も近いものをお選びください"
+				]
 			}
 		};
 		const message = {
