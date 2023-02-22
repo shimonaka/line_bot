@@ -59,9 +59,13 @@ async function handleEvent(event) {
 
 	// すべての質問に回答したかどうかを確認する
 	if (conversations[userId].currentQuestionIndex === questions.length) {
+		let messageText = 'あなたの回答をまとめます\n\n';
+		conversations[userId].answers.forEach((answer, index) => {
+			messageText += `${index + 1}. ${answer}\n`;
+		});
 		const message = {
 			type: 'text',
-			text: conversations[userId].answers
+			text: messageText
 		};
 		await client.replyMessage(event.replyToken, message);
 
