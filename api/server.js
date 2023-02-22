@@ -59,7 +59,7 @@ async function handleEvent(event) {
 
 	// すべての質問に回答したかどうかを確認する
 	if (conversations[userId].currentQuestionIndex === questions.length) {
-		let messageText = 'あなたの回答をまとめます\n\n';
+		let messageText = 'あなたの回答\n\n';
 		conversations[userId].answers.forEach((answer, index) => {
 			if( index === 0) { return; }
 			messageText += `${index}. ${answer}\n`;
