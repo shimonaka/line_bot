@@ -126,6 +126,11 @@ async function handleEvent(event) {
 						"type": "message",
 						"label": "成長スピード",
 						"text": "成長スピード"
+					},
+					{
+						"type": "message",
+						"label": "オシャレさ",
+						"text": "オシャレさ"
 					}
 				],
 				"title": "働くお店に求めることは何ですか？",
@@ -157,6 +162,11 @@ async function handleEvent(event) {
 						"type": "message",
 						"label": "40代",
 						"text": "40代"
+					},
+					{
+						"type": "message",
+						"label": "50代以上",
+						"text": "50代以上"
 					}
 				],
 				"title": "あなたの年代を教えてください",
