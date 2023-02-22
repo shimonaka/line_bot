@@ -109,32 +109,27 @@ async function handleEvent(event) {
 				"actions": [
 					{
 						"type": "message",
-						"label": "給料",
-						"text": "給料"
+						"label": "アシスタント",
+						"text": "アシスタント"
 					},
 					{
 						"type": "message",
-						"label": "安定性",
-						"text": "安定性"
+						"label": "スタイリスト",
+						"text": "スタイリスト"
 					},
 					{
 						"type": "message",
-						"label": "成長スピード",
-						"text": "成長スピード"
+						"label": "学生",
+						"text": "学生"
 					},
 					{
 						"type": "message",
-						"label": "オシャレさ",
-						"text": "オシャレさ"
-					},
-					{
-						"type": "message",
-						"label": "ママへの待遇",
-						"text": "ママへの待遇"
+						"label": "それ以外",
+						"text": "それ以外"
 					}
 				],
-				"title": "働くお店に求めることは何ですか？",
-				"text": "以下から最も近いものをお選びください"
+				"title": "現在の技術ランクを教えてください",
+				"text": "一番あなたに近いものを教えてください"
 			}
 		};
 		const question4 = {
