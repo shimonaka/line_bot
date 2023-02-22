@@ -46,30 +46,30 @@ async function handleEvent(event) {
 				answers: []
 			};
 		}
+	}
 
-		// 現在の質問を取得してユーザーに送信する
-		const currentQuestionIndex = conversations[userId].currentQuestionIndex;
-		const currentQuestion = questions[currentQuestionIndex];
-		await client.pushMessage(userId, currentQuestion);
+	// 現在の質問を取得してユーザーに送信する
+	const currentQuestionIndex = conversations[userId].currentQuestionIndex;
+	const currentQuestion = questions[currentQuestionIndex];
+	await client.pushMessage(userId, currentQuestion);
 
-		// ユーザーの回答を保存して、次の質問に進みます
-		conversations[userId].answers.push(userMessage);
-		conversations[userId].currentQuestionIndex += 1;
+	// ユーザーの回答を保存して、次の質問に進みます
+	conversations[userId].answers.push(userMessage);
+	conversations[userId].currentQuestionIndex += 1;
 
-		// すべての質問に回答したかどうかを確認する
-		if (conversations[userId].currentQuestionIndex === questions.length) {
-			const message = {
-				type: 'text',
-				text: 'ご回答ありがとうございます！\n担当者へお繋ぎしますので、しばらくお待ちください。'
-			};
-			await client.replyMessage(event.replyToken, message);
+	// すべての質問に回答したかどうかを確認する
+	if (conversations[userId].currentQuestionIndex === questions.length) {
+		const message = {
+			type: 'text',
+			text: 'ご回答ありがとうございます！\n担当者へお繋ぎしますので、しばらくお待ちください。'
+		};
+		await client.replyMessage(event.replyToken, message);
 
-			// 答えを使って何かをします。それらをデータベースに保存するか、Webhook に送信します
-			console.log(conversations[userId].answers);
+		// 答えを使って何かをします。それらをデータベースに保存するか、Webhook に送信します
+		console.log(conversations[userId].answers);
 
-			// 会話オブジェクトをリセットする
-			delete conversations[userId];
-		}
+		// 会話オブジェクトをリセットする
+		delete conversations[userId];
 	}
 
 
