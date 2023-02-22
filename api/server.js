@@ -239,10 +239,6 @@ const questions = [
 				}
 			]
 		}
-	},
-	{
-		type: 'text',
-		text: conversations[userId].answers
 	}
 ];
 
