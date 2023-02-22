@@ -58,7 +58,7 @@ async function handleEvent(event) {
 	conversations[userId].currentQuestionIndex += 1;
 
 	// すべての質問に回答したかどうかを確認する
-	if (conversations[userId].currentQuestionIndex - 1 === questions.length) {
+	if (conversations[userId].currentQuestionIndex === questions.length) {
 		const message = {
 			type: 'text',
 			text: 'ご回答ありがとうございます！\n担当者へお繋ぎしますので、しばらくお待ちください。'
@@ -239,6 +239,10 @@ const questions = [
 				}
 			]
 		}
+	},
+	{
+		type: 'text',
+		text: conversations[userId].answers
 	}
 ];
 
