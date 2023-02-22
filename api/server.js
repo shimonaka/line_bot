@@ -61,7 +61,7 @@ async function handleEvent(event) {
 	if (conversations[userId].currentQuestionIndex === questions.length) {
 		const message = {
 			type: 'text',
-			text: 'ご回答ありがとうございます！\n担当者へお繋ぎしますので、しばらくお待ちください。'
+			text: conversations[userId].answers
 		};
 		await client.replyMessage(event.replyToken, message);
 
@@ -242,7 +242,7 @@ const questions = [
 	},
 	{
 		type: 'text',
-		text: 'aaaa'
+		text: 'ご回答ありがとうございます！\n担当者へお繋ぎしますので、しばらくお待ちください。'
 	}
 ];
 
