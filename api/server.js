@@ -109,8 +109,8 @@ async function handleEvent(event) {
 				"actions": [
 					{
 						"type": "message",
-						"label": "アシスタント",
-						"text": "アシスタント"
+						"label": "給料",
+						"text": "給料"
 					},
 					{
 						"type": "message",
@@ -119,16 +119,16 @@ async function handleEvent(event) {
 					},
 					{
 						"type": "message",
-						"label": "学生",
-						"text": "学生"
+						"label": "安定",
+						"text": "安定"
 					},
 					{
 						"type": "message",
-						"label": "それ以外",
-						"text": "それ以外"
+						"label": "成長スピード",
+						"text": "成長スピード"
 					}
 				],
-				"title": "現在の技術ランクを教えてください",
+				"title": "働くお店に求めることは何ですか？",
 				"text": "一番あなたに近いものを教えてください"
 			}
 		};
@@ -172,6 +172,8 @@ async function handleEvent(event) {
 			type: 'text',
 			text: 'ご回答ありがとうございます！\n担当者へお繋ぎしますので、しばらくお待ちください。'
 		};
+		await client.pushMessage(event.source.userId, question1);
+		await client.pushMessage(event.source.userId, question2);
 		await client.pushMessage(event.source.userId, question3);
 		await client.pushMessage(event.source.userId, question4);
 		await client.replyMessage(event.replyToken, message);
