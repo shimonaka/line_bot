@@ -61,7 +61,8 @@ async function handleEvent(event) {
 	if (conversations[userId].currentQuestionIndex === questions.length) {
 		let messageText = 'あなたの回答をまとめます\n\n';
 		conversations[userId].answers.forEach((answer, index) => {
-			messageText += `${index + 1}. ${answer}\n`;
+			if( index === 0) { return; }
+			messageText += `${index}. ${answer}\n`;
 		});
 		const message = {
 			type: 'text',
