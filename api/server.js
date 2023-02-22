@@ -62,11 +62,21 @@ async function handleEvent(event) {
 					},
 					{
 						"type": "message",
-						"label": "未定",
-						"text": "未定"
+						"label": "1年以内",
+						"text": "1年以内"
+					},
+					{
+						"type": "message",
+						"label": "時期未定",
+						"text": "時期未定"
+					},
+					{
+						"type": "message",
+						"label": "良いサロンが見つかれば",
+						"text": "良いサロンが見つかれば"
 					}
 				],
-				"title": " 転職希望時期をお選びください！",
+				"title": "転職希望時期をお選びください！",
 				"text": "ご希望の転職時期をお選びください"
 			}
 		};
@@ -88,8 +98,18 @@ async function handleEvent(event) {
 					},
 					{
 						"type": "message",
+						"label": "アイリスト",
+						"text": "アイリスト"
+					},
+					{
+						"type": "message",
 						"label": "学生",
 						"text": "学生"
+					},
+					{
+						"type": "message",
+						"label": "ブランク有り",
+						"text": "ブランク有り"
 					},
 					{
 						"type": "message",
@@ -131,6 +151,11 @@ async function handleEvent(event) {
 						"type": "message",
 						"label": "オシャレさ",
 						"text": "オシャレさ"
+					},
+					{
+						"type": "message",
+						"label": "ママへの待遇",
+						"text": "ママへの待遇"
 					}
 				],
 				"title": "働くお店に求めることは何ですか？",
@@ -165,8 +190,13 @@ async function handleEvent(event) {
 					},
 					{
 						"type": "message",
-						"label": "50代以上",
-						"text": "50代以上"
+						"label": "50代",
+						"text": "50代"
+					},
+					{
+						"type": "message",
+						"label": "60代以上",
+						"text": "60代以上"
 					}
 				],
 				"title": "あなたの年代を教えてください",
